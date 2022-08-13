@@ -1,4 +1,5 @@
 const doc= document.querySelector('body');
+const toggleHamb= document.querySelector('.toggle_hamburger');
 
 const forwards = 1;
 const backwards = -1;
@@ -79,5 +80,15 @@ function slideToTheRightBoxLive(e){
     let k= slideIndex - 1;
     showSlides[k].style.setProperty("--display-slide", "block");
     spotSlides[k].style.setProperty("--display-slide", "block");
+  }
+}
+
+doc.addEventListener('click', bodyShadowedLive);
+
+function bodyShadowedLive(){
+  if(toggleHamb.checked === true){
+    doc.style.setProperty("--display-shadow", "block");
+  } else {
+    doc.style.setProperty("--display-shadow", "none");
   }
 }
