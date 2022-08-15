@@ -866,6 +866,22 @@ a.nav_item:hover{
     margin: 0.5rem auto;
   }
 
+  .spotlight .icon_angle{
+    width: 70px;
+  }
+
+  .spotlight .icon_angle .icon_angle_left{
+    position: relative;
+    right: .35rem;
+    padding: .2rem;
+  }
+
+  .spotlight .icon_angle .icon_angle_right{
+    position: relative;
+    left: .10rem;
+    padding: .2rem;
+  }
+
 
   .spotlight .spotlight_container1 .icon_angle{
     position: absolute;
@@ -886,7 +902,7 @@ a.nav_item:hover{
     position: absolute;
     top: 0;
     left: 100%;
-    transform: translate(-60%, -320%);  
+    transform: translate(-60%, -320%);
   }
 
   .our_furniture{

@@ -46,7 +46,7 @@ function currentNavBtn(e){
 }
 
 
-doc.addEventListener('click', slideToTheRightBoxLive);
+doc.addEventListener('mousedown', slideToTheRightBoxLive);
 
 function slideToTheRightBoxLive(e){
   if(e.target.classList.contains('icon_left')){
