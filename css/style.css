@@ -13,6 +13,9 @@
   --display-slide: none;
   --display-shadow: none;
 
+  --transition-to-left:translateX(100%);
+  --transition-to-right:translateX(-100%);
+
 }
 
 
@@ -53,8 +56,8 @@ li{
 .nav_mobile .logo{
   position: relative;
   top: 55%;
-  left: 5%;
-  transform: translate(0, 24%) scale(1);
+  left: 0;
+  transform: translate(-100%, 24%) scale(1);
   width: 50px;
   height: 30px;
   align-items: center;
@@ -266,7 +269,18 @@ a.nav_item:hover{
   width: inherit;
   background: var(--white);
   height: 52vh;
-  max-height: 65vh;
+  max-height: 85vh;
+}
+
+.show_slide{
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position:  center center;
+  transform: translateX(-100%);
+  opacity: 0.72;
+  visibility: hidden;
+  /* transition: transform 450ms ease-in-out, opacity 400ms ease-in-out, visibility 350ms ease-in; */
+  transition: transform 4s ease-in-out, opacity 2s ease-in-out, visibility 2.3s ease-in;
 }
 
 .showcase_slide1, .showcase_slide2, .showcase_slide3{
@@ -291,14 +305,16 @@ a.nav_item:hover{
 
  /* home spotlight */
 
- .spotlight_container1, .spotlight_container2, .spotlight_container3{
-   position: relative;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   justify-content: center;
-   align-items: center;
-   margin: 0 auto;  
+ .spot_sight{
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin: 0 auto;  
+  transform: translateX(100%);
+  /* translate: transform 400ms ease-in-out; */
+  translate: transform 4s ease-in-out;
+
  }
 
  .spotlight .spot_ct{
@@ -412,7 +428,10 @@ a.nav_item:hover{
    margin-bottom: 0.7rem;
  }
 
- .attribution { font-size: 11px; text-align: center; 
+ .attribution { 
+   font-size: 11px; 
+   text-align: center; 
+   margin: 1rem 0;
 }
 
 .attribution a { color: hsl(228, 45%, 44%); }
@@ -775,7 +794,7 @@ a.nav_item:hover{
     top: 0;
     left: 0;
     width: 100vw;
-    min-height: 260vh;
+    min-height: 365vh;
     background: var(--light-black);
     z-index: 10;
   }
@@ -805,7 +824,7 @@ a.nav_item:hover{
   
   .spotlight{
     width: 100vw;
-    height: 400px;
+    height: 500px;
     padding: 0 1.4rem;
   }
 
@@ -852,34 +871,48 @@ a.nav_item:hover{
 
   .spotlight .spotlight_container1 .spot_ct{
     max-width: 100%;
-    width: 84%;
+    width: 86%;
     margin: 0.5rem auto;
   }
   .spotlight .spotlight_container2 .spot_ct{
     max-width: 100%;
-    width: 66%;
+    width: 72%;
     margin: 0.5rem auto;
   }
   .spotlight .spotlight_container3 .spot_ct{
     max-width: 100%;
-    width: 74%;
+    width: 75%;
     margin: 0.5rem auto;
   }
 
   .spotlight .icon_angle{
     width: 70px;
+    height: 38px;
   }
 
   .spotlight .icon_angle .icon_angle_left{
     position: relative;
-    right: .35rem;
+    right: .15rem;
     padding: .2rem;
+    width: 40px;
+    height: 100%; 
   }
 
   .spotlight .icon_angle .icon_angle_right{
     position: relative;
     left: .10rem;
     padding: .2rem;
+    width: 40px; 
+    height: 100%;
+  }
+
+  .spotlight .icon_angle .icon_angle_left .icon_left{
+    width: 18px; 
+    height: 16px;
+  }
+  .spotlight .icon_angle .icon_angle_right .icon_right{
+    width: 18px; 
+    height: 16px;
   }
 
 
@@ -887,14 +920,14 @@ a.nav_item:hover{
     position: absolute;
     top: 0;
     left: 100%;
-    transform: translate(-60%, -400%); 
+    transform: translate(-110%, -115%); 
   }
 
   .spotlight .spotlight_container2 .icon_angle{
     position: absolute;
     top: 0;
     left: 100%;
-    transform: translate(-60%, -325%);  
+    transform: translate(-110%, -115%);  
   }
 
 
@@ -902,7 +935,7 @@ a.nav_item:hover{
     position: absolute;
     top: 0;
     left: 100%;
-    transform: translate(-60%, -320%);
+    transform: translate(-110%, -115%);
   }
 
   .our_furniture{
@@ -976,19 +1009,6 @@ a.nav_item:hover{
     max-width: 100%;
     width: 84%;
     margin: 0.2rem auto;
-  }
-
-  .spotlight .spotlight_container1 .icon_angle{
-    transform: translate(-60%, -310%); 
-  }
-
-  .spotlight .spotlight_container2 .icon_angle{
-    transform: translate(-60%, -240%);  
-  }
-
-
-  .spotlight .spotlight_container3 .icon_angle{
-    transform: translate(-60%, -240%);  
   }
 
  }

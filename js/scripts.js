@@ -12,6 +12,12 @@ let n, slideIndex= 1;
 window.onload= function(){
   showSlides[0].style.setProperty("--display-slide", "block");
   spotSlides[0].style.setProperty("--display-slide", "block");
+
+  showSlides[0].style.transform= "translateX(0%)";
+  showSlides[0].style.opacity="1";
+  showSlides[0].style.visibility="visible";
+  spotSlides[0].style.transform= "translateX(0%)";
+   
 }
 
 
@@ -46,7 +52,7 @@ function currentNavBtn(e){
 }
 
 
-doc.addEventListener('mousedown', slideToTheRightBoxLive);
+doc.addEventListener('click', slideToTheRightBoxLive);
 
 function slideToTheRightBoxLive(e){
   if(e.target.classList.contains('icon_left')){
@@ -63,7 +69,12 @@ function slideToTheRightBoxLive(e){
     }
     let k= slideIndex - 1;
     showSlides[k].style.setProperty("--display-slide", "block");
-    spotSlides[k].style.setProperty("--display-slide", "block");
+    spotSlides[k].style.setProperty("--display-slide", "flex");
+
+    showSlides[k].style.transform= "translateX(0%)";
+    showSlides[k].style.opacity="1";
+    showSlides[k].style.visibility="visible";
+    spotSlides[k].style.transform= "translateX(0%)";  
 
   } else if(e.target.classList.contains('icon_right')){
     n=1;
@@ -79,7 +90,12 @@ function slideToTheRightBoxLive(e){
     }
     let k= slideIndex - 1;
     showSlides[k].style.setProperty("--display-slide", "block");
-    spotSlides[k].style.setProperty("--display-slide", "block");
+    spotSlides[k].style.setProperty("--display-slide", "flex");
+
+    showSlides[k].style.transform= "translateX(0%)";
+    showSlides[k].style.opacity="1";
+    showSlides[k].style.visibility="visible";
+    spotSlides[k].style.transform= "translateX(0%)";
   }
 }
 
