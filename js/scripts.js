@@ -1,5 +1,6 @@
 const doc= document.querySelector('body');
 const toggleHamb= document.querySelector('.toggle_hamburger');
+const toggleHambClose= document.querySelector('.hamburger_close');
 
 const forwards = 1;
 const backwards = -1;
@@ -7,7 +8,7 @@ const backwards = -1;
 let showSlides= document.querySelectorAll('.show_slide');
 let spotSlides= document.querySelectorAll('.spot_sight');
 let navBtn= document.querySelectorAll('.nav_item');
-let n, slideIndex= 1;
+let n, m, slideIndex= 1, slideIndexLeft= showSlides.length ;
 
 window.onload= function(){
   showSlides[0].style.setProperty("--display-slide", "block");
@@ -57,21 +58,26 @@ doc.addEventListener('click', slideToTheRightBoxLive);
 function slideToTheRightBoxLive(e){
   if(e.target.classList.contains('icon_left')){
     n= -1;
-    slideIndex= slideIndex + n;
-    if(slideIndex> showSlides.length){
-      slideIndex= 1;
-    }else if (slideIndex < 1){
-      slideIndex= showSlides.length;
+
+    slideIndexLeft= slideIndexLeft + n;
+    console.log(slideIndexLeft);
+
+    if(slideIndexLeft < 0){
+      slideIndexLeft= showSlides.length - 1;
     }
+    console.log(slideIndexLeft);
+
+    
     for(let i=0; i<showSlides.length; i++){
-      showSlides[i].style.setProperty("--display-slide", "none");
-      spotSlides[i].style.setProperty("--display-slide", "none");
+      showSlides[i].style.setProperty("--display-slide", "hidden");
+      spotSlides[i].style.setProperty("--display-slide", "hidden");
+      showSlides[i].style.transform= "translateX(-140%)";
     }
-    let k= slideIndex - 1;
-    showSlides[k].style.setProperty("--display-slide", "block");
+    let k= slideIndexLeft;
+    showSlides[k].style.setProperty("--display-slide", "visible");
     spotSlides[k].style.setProperty("--display-slide", "flex");
 
-    showSlides[k].style.transform= "translateX(0%)";
+    showSlides[k].style.transform= "translateX(0)";
     showSlides[k].style.opacity="1";
     showSlides[k].style.visibility="visible";
     spotSlides[k].style.transform= "translateX(0%)";  
@@ -79,17 +85,18 @@ function slideToTheRightBoxLive(e){
   } else if(e.target.classList.contains('icon_right')){
     n=1;
     slideIndex= slideIndex + n;
-    if(slideIndex> showSlides.length){
+    if(slideIndex > showSlides.length){
       slideIndex= 1;
     }else if (slideIndex < 1){
       slideIndex= showSlides.length;
     }
     for(let i=0; i<showSlides.length; i++){
-      showSlides[i].style.setProperty("--display-slide", "none");
-      spotSlides[i].style.setProperty("--display-slide", "none");
+      showSlides[i].style.setProperty("--display-slide", "hidden");
+      spotSlides[i].style.setProperty("--display-slide", "hidden");
+      showSlides[i].style.transform= "translateX(-140%)";
     }
     let k= slideIndex - 1;
-    showSlides[k].style.setProperty("--display-slide", "block");
+    showSlides[k].style.setProperty("--display-slide", "visible");
     spotSlides[k].style.setProperty("--display-slide", "flex");
 
     showSlides[k].style.transform= "translateX(0%)";
@@ -103,8 +110,8 @@ doc.addEventListener('click', bodyShadowedLive);
 
 function bodyShadowedLive(){
   if(toggleHamb.checked === true){
-    doc.style.setProperty("--display-shadow", "block");
-  } else {
-    doc.style.setProperty("--display-shadow", "none");
+    doc.style.setProperty("--display-shadow-close", "visible");
+  } else if(toggleHamb.checked === false) {
+    doc.style.setProperty("--display-shadow-close", "hidden");
   }
 }

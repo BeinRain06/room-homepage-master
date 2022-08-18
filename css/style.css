@@ -10,8 +10,9 @@
 
   --border-display: hsl(0, 0%, 100%);
 
-  --display-slide: none;
-  --display-shadow: none;
+  --display-slide: hidden;
+  --display-shadow-open: visible;
+  --display-shadow-close: hidden;
 
   --transition-to-left:translateX(100%);
   --transition-to-right:translateX(-100%);
@@ -72,7 +73,7 @@ li{
   height: 30px;
   background: transparent;
   opacity: 0;
-  z-index: 100;
+  z-index: 300;
 }
 
 .menu_wrap .hamburger_image{
@@ -84,29 +85,31 @@ li{
 }
 
 .menu_wrap .hamburger_image img.hamburger_open{
-  display: block;
+  visibility: var(--display-shadow-close);
   position: absolute;
   top: 25%;
   left: 0;
   width: 30px;
   height: 20px;
+  z-index: 100;
  
 }
 .menu_wrap .hamburger_image img.hamburger_close{
-  display: none;
+  visibility: var(--display-shadow-close);
   position: absolute;
   top: 66%;
   left: 30%;
   width: 20px;
   height: 20px;
   transform: translate(-50%, -50%);
-  z-index: 25;
+  z-index: 100;
 
 }
 
 .menu_content{
   position: absolute;
-  display: none;
+  display: flex;
+  visibility: hidden;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -115,7 +118,6 @@ li{
   width: 100vw;
   height: 70px;
   background: var(--white);
-  z-index: 10;
 }
 
 .menu_wrap .menu_content ul{
@@ -125,7 +127,7 @@ li{
   align-items: center;
   font-size: 22px;
   font-weight: bold;
-  z-index: 10;
+  z-index: 100;
 }
 
 .menu_wrap .menu_content ul li{
@@ -145,15 +147,15 @@ li{
 /* hamburger checked */
 
 .menu_wrap input[type="checkbox"]:checked + .hamburger_image img.hamburger_open{
-  display: none;
+  visibility: var(--display-shadow-close);
 }
 
 .menu_wrap input[type="checkbox"]:checked + .hamburger_image img.hamburger_close{
-  display: block;
+  visibility: var(--display-shadow-open);
 }
 
 .menu_wrap input[type="checkbox"]:checked  ~ .menu_content{
-  display: flex;
+ visibility: visible;
 }
 
 
@@ -161,27 +163,27 @@ li{
 /* viewable before sliding */
 
 .showcase_slide1{
-  display: var(--display-slide);
+ visibility: var(--display-slide);
 }
 
 .showcase_slide2{
-  display: var(--display-slide);
+ visibility: var(--display-slide);
 }
 
 .showcase_slide3{
-  display: var(--display-slide);
+ visibility: var(--display-slide);
 }
 
 .spotlight_container1{
-  display: var(--display-slide);
+ visibility: var(--display-slide);
 }
 
 .spotlight_container2{
-  display: var(--display-slide);
+ visibility: var(--display-slide);
 }
 
 .spotlight_container3{
-  display: var(--display-slide);
+ visibility: var(--display-slide);
 }
 
 
@@ -255,36 +257,43 @@ a.nav_item:hover{
 .our_home .home_container{
   display: grid;
   grid-template-areas: 'showcase spotlight';
+  /* height: 52vh;
+  max-height: 60vh; */
   
 }
 
 .showcase{
   grid-area: showcase;
-  width: 52vw;
+  width: 55vw;
+  transform: translateX(0);
+}
 
+.showcase.showcase_container{
+  width: 55vw;
 }
 
 .spotlight{
   grid-area: spotlight;
-  width: inherit;
+  width: calc(45vw - 4rem);
   background: var(--white);
   height: 52vh;
   max-height: 85vh;
 }
 
 .show_slide{
+  width: 55vw;
   object-fit: cover;
   background-repeat: no-repeat;
   background-position:  center center;
-  transform: translateX(-100%);
+  transform: translateX(-140%);
   opacity: 0.72;
   visibility: hidden;
-  /* transition: transform 450ms ease-in-out, opacity 400ms ease-in-out, visibility 350ms ease-in; */
-  transition: transform 4s ease-in-out, opacity 2s ease-in-out, visibility 2.3s ease-in;
+  transition: transform 450ms ease-in-out, opacity 400ms ease-in-out, visibility 350ms ease-in;
+  /* transition: transform 4s ease-in-out, opacity 2s ease-in-out, visibility 2.3s ease-in; */
 }
 
 .showcase_slide1, .showcase_slide2, .showcase_slide3{
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   height: 52vh;
@@ -292,14 +301,18 @@ a.nav_item:hover{
 
 .showcase_slide1{
   background: url('../images/desktop-image-hero-1.jpg') no-repeat center center/cover;
+  /* transform: translateX(-100%); */
+  
 }
 
 .showcase_slide2{
   background: url('../images/desktop-image-hero-2.jpg') no-repeat center center/cover;
+  /* transform: translateX(-100%); */
 }
 
 .showcase_slide3{
   background: url('../images/desktop-image-hero-3.jpg') no-repeat center center/cover;
+  /* transform: translateX(-100%); */
 }
 
 
@@ -312,8 +325,8 @@ a.nav_item:hover{
   align-items: left;
   margin: 0 auto;  
   transform: translateX(100%);
-  /* translate: transform 400ms ease-in-out; */
-  translate: transform 4s ease-in-out;
+  translate: transform 400ms ease-in-out;
+  /* translate: transform 4s ease-in-out; */
 
  }
 
@@ -326,16 +339,19 @@ a.nav_item:hover{
    max-width: 100%;
    width: 58%;
    margin: 0.5rem auto;
+   transform: translateY(20%);
  }
  .spotlight .spotlight_container2 .spot_ct{
    max-width: 100%;
    width: 55%;
    margin: 0.5rem auto;
+   transform: translateY(-90%);
  }
  .spotlight .spotlight_container3 .spot_ct{
    max-width: 100%;
    width: 64%;
    margin: 0.5rem auto;
+   transform: translateY(-190%);
  }
 
  .spotlight .spot_ct .immediate_service{
@@ -367,21 +383,21 @@ a.nav_item:hover{
  }
 
  .spotlight .spotlight_container1 .icon_angle{
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: 100%;
   left: 0;
   transform: translate(0, 66%); 
 }
  .spotlight .spotlight_container2 .icon_angle{
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
-  transform: translate(0, 66%); 
+  transform: translate(0, 60%); 
 }
 
 .spotlight .spotlight_container3 .icon_angle{
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: -14rem;
   left: 0;
   transform: translate(0, 66%);  
 }
@@ -453,7 +469,7 @@ a.nav_item:hover{
   }
    
  }
- @media (max-width:1036px) {
+ @media (max-width:1072px) {
   h2{
     
     font-size: 20px;
@@ -500,7 +516,7 @@ a.nav_item:hover{
    
  }
 
- @media (max-width:832px) {
+ @media (max-width:900px) {
   h2{
     
     font-size: 17px;
@@ -514,13 +530,13 @@ a.nav_item:hover{
     font-size: 10px;  
   }
 
-  .spotlight{
-    height: 42vh;
-  }
-
   .showcase_slide1, .showcase_slide2, .showcase_slide3{
-    height: 42vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: vh;
   }
+  
 
  
   .spotlight .immediate_service .icon_arrow{
@@ -529,7 +545,6 @@ a.nav_item:hover{
   }
 
   .spotlight .icon_angle{
-    /* transform: translate(0, 20%); */
     width: 50px;
     height: 27px;
     box-shadow: 3px 1px 0 1px var(--light-brown);
@@ -553,6 +568,13 @@ a.nav_item:hover{
     max-width: 100%;
     width: 56%;
     margin: 0.5rem auto;
+    transform: translateY(-100%);
+  }
+  .spotlight .spotlight_container2 .spot_ct{
+    max-width: 100%;
+    width: 56%;
+    margin: 0.5rem auto;
+    transform: translateY(-100%);
   }
 
   .spotlight .spotlight_container1 .icon_angle{
@@ -578,6 +600,9 @@ a.nav_item:hover{
     font-size: 8px; 
     text-align: center; 
   }
+
+  
+
    
  }
 
@@ -617,6 +642,7 @@ a.nav_item:hover{
 
   .spotlight{
     height: 38vh;
+    width: calc(45vw - 1.6rem);
   }
 
   .spotlight .spotlight_container3 .spot_ct{
@@ -688,14 +714,6 @@ a.nav_item:hover{
 
   a.nav_item{
     font-size: 8px;
-  }
-
-   .spotlight{
-    height: 30vh;
-  }
-
-  .showcase_slide1, .showcase_slide2, .showcase_slide3{
-    height: 30vh;
   }
 
   .spotlight .immediate_service >span{
@@ -790,13 +808,13 @@ a.nav_item:hover{
   body::before{
     content: '';
     position: absolute;
-    display: var(--display-shadow);
+    visibility: var(--display-shadow-close);
     top: 0;
     left: 0;
     width: 100vw;
     min-height: 365vh;
     background: var(--light-black);
-    z-index: 10;
+    z-index: 1;
   }
 
   .nav_mobile{
@@ -808,7 +826,7 @@ a.nav_item:hover{
   }
 
   .menu_wrap .hamburger_image img.hamburger_open{
-    display: block;
+    visibility: var(--display-shadow-open);
   }
 
   .our_home .home_container{
@@ -820,11 +838,22 @@ a.nav_item:hover{
 
   .showcase{
     width: 100vw;
+    position: relative;
+    grid-area: showcase;
+    height: 74vh;
+  }
+  .showcase_slide1, .showcase_slide2, .showcase_slide3{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 500px;
   }
   
   .spotlight{
     width: 100vw;
-    height: 500px;
+    height: 350px;
+    grid-area: spotlight;
     padding: 0 1.4rem;
   }
 
@@ -878,11 +907,13 @@ a.nav_item:hover{
     max-width: 100%;
     width: 72%;
     margin: 0.5rem auto;
+    transform: translateY(-70%);
   }
   .spotlight .spotlight_container3 .spot_ct{
     max-width: 100%;
     width: 75%;
     margin: 0.5rem auto;
+    transform: translateY(-170%);
   }
 
   .spotlight .icon_angle{
@@ -920,14 +951,14 @@ a.nav_item:hover{
     position: absolute;
     top: 0;
     left: 100%;
-    transform: translate(-110%, -115%); 
+    transform: translate(-100%, -115%); 
   }
 
   .spotlight .spotlight_container2 .icon_angle{
     position: absolute;
     top: 0;
     left: 100%;
-    transform: translate(-110%, -115%);  
+    transform: translate(-100%, -750%);  
   }
 
 
@@ -935,7 +966,7 @@ a.nav_item:hover{
     position: absolute;
     top: 0;
     left: 100%;
-    transform: translate(-110%, -115%);
+    transform: translate(-100%, -1430%);
   }
 
   .our_furniture{
@@ -950,7 +981,7 @@ a.nav_item:hover{
 
   .preview_1{
     width: 100vw;
-    height: 260px;
+    height: 230px;
   }
 
   .about_furniture{
@@ -961,12 +992,12 @@ a.nav_item:hover{
     max-width: 100vw;
     width: 100vw;
     padding: 0 2rem;
-    height: 280px;
+    height: 260px;
   }
 
   .preview_2{
     width: 100vw;
-    height: 260px;
+    height: 230px;
   }
 
   .about_furniture .furniture_content{
