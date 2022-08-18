@@ -300,19 +300,15 @@ a.nav_item:hover{
 }
 
 .showcase_slide1{
-  background: url('../images/desktop-image-hero-1.jpg') no-repeat center center/cover;
-  /* transform: translateX(-100%); */
-  
+  background: url('../images/desktop-image-hero-1.jpg') no-repeat center center/cover;  
 }
 
 .showcase_slide2{
   background: url('../images/desktop-image-hero-2.jpg') no-repeat center center/cover;
-  /* transform: translateX(-100%); */
 }
 
 .showcase_slide3{
   background: url('../images/desktop-image-hero-3.jpg') no-repeat center center/cover;
-  /* transform: translateX(-100%); */
 }
 
 
@@ -326,8 +322,6 @@ a.nav_item:hover{
   margin: 0 auto;  
   transform: translateX(100%);
   translate: transform 400ms ease-in-out;
-  /* translate: transform 4s ease-in-out; */
-
  }
 
  .spotlight .spot_ct{
@@ -351,7 +345,7 @@ a.nav_item:hover{
    max-width: 100%;
    width: 64%;
    margin: 0.5rem auto;
-   transform: translateY(-190%);
+   transform: translateY(-210%);
  }
 
  .spotlight .spot_ct .immediate_service{
@@ -397,7 +391,7 @@ a.nav_item:hover{
 
 .spotlight .spotlight_container3 .icon_angle{
   position: absolute;
-  top: -14rem;
+  top: -19.5rem;
   left: 0;
   transform: translate(0, 66%);  
 }
