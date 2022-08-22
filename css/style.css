@@ -4,9 +4,12 @@
   --soft-gray: hsl(209, 9%, 45%);
   --light-brown: hsl(0, 33%, 82%);
   --black: hsl(0, 0%, 0%);
-  --light-black: hsla(0, 0%, 0%, 0.507);
+  --light-black: hsla(0, 0%, 0%, 0.652);
   --white: hsl(0, 0%, 100%);
   --very-dark-gray: hsl(0, 0%, 27%);
+
+  --shadow-enabled: hidden;
+  --translate-width: 5vw;
 
   --font-family: "League Spartan", sans-serif;
 
@@ -26,6 +29,9 @@
 }
 
 body {
+  position: relative;
+  top: 0;
+  left: 0;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr min-content;
@@ -36,7 +42,20 @@ body {
   background-color: var(--white);
 }
 
-img {
+body::before{
+  position: absolute;
+  visibility: var(--shadow-enabled);
+  content: '';
+  background: var(--light-black);
+  top: 0;
+  left: 0;
+  min-height: 270vh;
+  width: var(--translate-width);
+  transition: all 310ms ease;
+  z-index: 6;
+}
+
+img{
   max-width: 100%;
   display: block;
   line-height: 0;
@@ -199,7 +218,7 @@ p {
   visibility: hidden;
   transition: transform 300ms ease-in-out, opacity 400ms ease-in-out,
     visibility 500ms ease-in-out;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .spot_ct[data-show_slide="true"] {
